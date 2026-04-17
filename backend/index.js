@@ -14,7 +14,7 @@ dotenv.config();
 const allowedOrigins = [
   'http://localhost:5173',
   'https://collabsphereai.vercel.app',
-  'https://access-hub-2-1tx4.onrender.com'
+  'https://access-hub-2-1tx4.onrender.com',
   'https://access-hub-silk.vercel.app'
 ];
 
