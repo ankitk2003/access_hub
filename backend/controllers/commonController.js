@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
 import dotenv from "dotenv";
 dotenv.config();
-const JWT_user_password = process.env.JWT_user_password;
+const JWT_user_password = process.env.JWT_USER_PASSWORD;
 
 const login = async (req, res) => {
   const { email, password ,role} = req.body;
