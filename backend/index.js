@@ -18,6 +18,7 @@ const allowedOrigins = [
   'https://access-hub-silk.vercel.app'
 ];
 
+// https://access-hub-2-1tx4.onrende
 //  CORS for Express
 app.use(
   cors({

@@ -2,7 +2,7 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
-const JWT_USER_PASSWORD = process.env.JWT_user_password;
+const JWT_USER_PASSWORD = process.env.JWT_USER_PASSWORD;
 //@ts-ignore
 function userMiddleware(req, res, next) {
   try {
