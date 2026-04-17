@@ -6,11 +6,10 @@ import dotenv from "dotenv";
 dotenv.config();
 const JWT_user_password = process.env.JWT_user_password;
 
+const login = async (req, res) => {
+  const { email, password ,role} = req.body;
 
-
-
- const login = async (req, res) => {
-  const { email, password } = req.body;
+  console.log("Login attempt:", { email, role }); // Debug log
 
   try {
     const user = await User.findOne({ email: email });
@@ -21,15 +20,22 @@ const JWT_user_password = process.env.JWT_user_password;
       });
     }
     const isPasswordValid = await bcrypt.compare(password, user.password);
+    
     if (!isPasswordValid) {
-      return res.status(403).json({
-        message: "Incorrect credentials",
-      });
+        return res.status(403).json({
+            message: "Incorrect credentials",
+        });
     }
+        if (user.role !== role) { 
+            return res.status(403).json({
+                message: "Role mismatch",
+            });
+         }
 
     const token = jwt.sign(
       {
         id: user._id,
+        role: user.role,
       },
       JWT_user_password,
     );
@@ -44,7 +50,5 @@ const JWT_user_password = process.env.JWT_user_password;
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
-
 
 export default login;

@@ -24,6 +24,7 @@ function userMiddleware(req, res, next) {
 
     //@ts-ignore
     req.userId = decoded.id;
+    req.role = decoded.role;
     console.log(decoded);
     next();
   } catch (error) {
